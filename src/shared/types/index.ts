@@ -8,12 +8,12 @@ export interface TodoItem {
 
 export interface TodoItemContext {
   data: TodoItem[];
+  selectedTodoId: TodoItem['id'];
+
+  selectTodoId: (targetTodoItemId: TodoItem['id']) => void;
   createTodoItem: (newTodoItem: TodoItem) => void;
-  modifyTodoItem: (
-    targetTodoItemId: TodoItem['id'],
-    newTodoItem: TodoItem
-  ) => void;
-  deleteTodoItem: (targetTodoItemId: TodoItem['id']) => void;
+  modifyTodoItem: (targetTodoId: TodoItem['id'], newTodoItem: TodoItem) => void;
+  deleteTodoItem: (targetTodoId: TodoItem['id']) => void;
 }
 
 export enum ButtonType {

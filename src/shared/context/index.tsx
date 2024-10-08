@@ -4,6 +4,8 @@ import { TodoItem, TodoItemContext } from '^/shared/types';
 
 const TodoContext = createContext<TodoItemContext>({
   data: [],
+  selectedTodoId: -1,
+  selectTodoId: () => {},
   createTodoItem: () => {},
   modifyTodoItem: () => {},
   deleteTodoItem: () => {},
@@ -19,6 +21,7 @@ interface TodoContextProviderProps {
 }
 
 export function TodoContextProvider({ children }: TodoContextProviderProps) {
+  const [selectedTodoId, setSelectedTodoId] = useState<TodoItem['id']>(-1);
   const [todos, setTodos] = useState<TodoItem[]>([]);
 
   function createTodoItem(newTodoItem: TodoItem) {
@@ -47,6 +50,8 @@ export function TodoContextProvider({ children }: TodoContextProviderProps) {
     <TodoContext.Provider
       value={{
         data: todos,
+        selectedTodoId,
+        selectTodoId: setSelectedTodoId,
         createTodoItem,
         modifyTodoItem,
         deleteTodoItem,
