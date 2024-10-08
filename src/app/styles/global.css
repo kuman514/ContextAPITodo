@@ -12,7 +12,9 @@
   --light-font-color: #000000;
   --dark-background-color: #033205;
   --dark-font-color: #ffffff;
-  --error-color: #ee4444;
+
+  --danger-color: #ee4444;
+  --danger-hovering-color: #eb8585;
 
   --white-color: #ffffff;
   --gray-color: #b1b1b1;
