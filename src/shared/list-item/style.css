@@ -1,3 +1,11 @@
 .list-item {
+  all: unset;
+
   font-weight: 700;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: var(--hovering-color);
 }
