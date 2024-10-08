@@ -15,3 +15,10 @@ export interface TodoItemContext {
   ) => void;
   deleteTodoItem: (targetTodoItemId: TodoItem['id']) => void;
 }
+
+export enum ButtonType {
+  FILLED = 'filled',
+  OUTLINE = 'outline',
+  FILLED_DANGER = 'filled-danger',
+  OUTLINE_DANGER = 'outline-danger',
+}
