@@ -1,0 +1,42 @@
+.base-button {
+  all: unset;
+
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+
+  cursor: pointer;
+}
+
+.base-button:hover {
+  color: var(--white-color);
+}
+
+.filled {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.outline {
+  color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+}
+
+.filled:hover,
+.outline:hover {
+  background-color: var(--hovering-color);
+}
+
+.filled-danger {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+}
+
+.outline-danger {
+  color: var(--danger-color);
+  border: solid 1px var(--danger-color);
+}
+
+.filled-danger:hover,
+.outline-danger:hover {
+  background-color: var(--danger-hovering-color);
+}
