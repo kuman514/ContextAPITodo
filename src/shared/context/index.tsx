@@ -1,14 +1,16 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
-import { TodoItem, TodoItemContext } from '^/shared/types';
+import { AppMode, TodoItem, TodoItemContext } from '^/shared/types';
 
 const TodoContext = createContext<TodoItemContext>({
   data: [],
   selectedTodoId: -1,
+  appMode: AppMode.DETAIL,
   selectTodoId: () => {},
   createTodoItem: () => {},
   modifyTodoItem: () => {},
   deleteTodoItem: () => {},
+  setAppMode: () => {},
 });
 
 export function useTodoContext() {
@@ -23,6 +25,7 @@ interface TodoContextProviderProps {
 export function TodoContextProvider({ children }: TodoContextProviderProps) {
   const [selectedTodoId, setSelectedTodoId] = useState<TodoItem['id']>(-1);
   const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [appMode, setAppMode] = useState<AppMode>(AppMode.DETAIL);
 
   function createTodoItem(newTodoItem: TodoItem) {
     setTodos(todos.concat([newTodoItem]));
@@ -51,10 +54,12 @@ export function TodoContextProvider({ children }: TodoContextProviderProps) {
       value={{
         data: todos,
         selectedTodoId,
+        appMode,
         selectTodoId: setSelectedTodoId,
         createTodoItem,
         modifyTodoItem,
         deleteTodoItem,
+        setAppMode,
       }}
     >
       {children}
