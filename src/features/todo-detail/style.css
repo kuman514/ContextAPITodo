@@ -1,0 +1,25 @@
+.todo-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.todo-at {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.todo-label {
+  font-weight: 700;
+}
+
+.empty-todo-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
