@@ -1,7 +1,6 @@
 .list-item {
   all: unset;
 
-  font-weight: 700;
   padding: 1rem;
   cursor: pointer;
 }
