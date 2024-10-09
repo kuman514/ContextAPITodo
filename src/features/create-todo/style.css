@@ -1,0 +1,10 @@
+.create-todo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.create-todo-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
