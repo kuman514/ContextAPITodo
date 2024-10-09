@@ -1,4 +1,4 @@
-import { TodoDetail } from '^/features/todo-detail';
+import { ModifyTodo } from '^/features/modify-todo';
 import { TodoList } from '^/features/todo-list';
 import { TodoContextProvider } from '^/shared/context';
 
@@ -14,7 +14,7 @@ export function App() {
         }}
       >
         <TodoList />
-        <TodoDetail />
+        <ModifyTodo />
       </main>
     </TodoContextProvider>
   );

@@ -1,0 +1,16 @@
+.modify-todo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modify-todo-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.empty-todo-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
