@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { TodoForm } from '^/entities/todo-form';
 import { BaseButton } from '^/shared/base-button';
 import { useTodoContext } from '^/shared/context';
+import { AppMode, ButtonType } from '^/shared/types';
 
 import './style.css';
 
 export function CreateTodo() {
-  const { data, createTodoItem } = useTodoContext();
+  const { data, createTodoItem, setAppMode, selectTodoId } = useTodoContext();
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 
@@ -20,24 +21,37 @@ export function CreateTodo() {
         onChangeTitle={setTitle}
         onChangeContent={setContent}
       />
-      <BaseButton
-        onClick={() => {
-          if (title.length === 0) {
-            return;
-          }
-          createTodoItem({
-            id: (data.at(-1)?.id ?? -1) + 1,
-            title,
-            content,
-            createdAt: new Date(),
-            modifiedAt: new Date(),
-          });
-          setTitle('');
-          setContent('');
-        }}
-      >
-        Create
-      </BaseButton>
+      <div className="button-area">
+        <BaseButton
+          onClick={() => {
+            if (title.length === 0) {
+              return;
+            }
+
+            const newTodoId = (data.at(-1)?.id ?? -1) + 1;
+            createTodoItem({
+              id: newTodoId,
+              title,
+              content,
+              createdAt: new Date(),
+              modifiedAt: new Date(),
+            });
+
+            selectTodoId(newTodoId);
+            setAppMode(AppMode.DETAIL);
+          }}
+        >
+          Create
+        </BaseButton>
+        <BaseButton
+          type={ButtonType.OUTLINE}
+          onClick={() => {
+            setAppMode(AppMode.DETAIL);
+          }}
+        >
+          Cancel
+        </BaseButton>
+      </div>
     </div>
   );
 }
