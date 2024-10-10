@@ -1,6 +1,6 @@
-import { ModifyTodo } from '^/features/modify-todo';
-import { TodoList } from '^/features/todo-list';
 import { TodoContextProvider } from '^/shared/context';
+import { ContentSection } from '^/widgets/content-section';
+import { Sidebar } from '^/widgets/sidebar';
 
 export function App() {
   return (
@@ -13,8 +13,8 @@ export function App() {
           gridTemplateColumns: '300px 1fr',
         }}
       >
-        <TodoList />
-        <ModifyTodo />
+        <Sidebar />
+        <ContentSection />
       </main>
     </TodoContextProvider>
   );
