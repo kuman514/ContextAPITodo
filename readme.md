@@ -17,3 +17,8 @@ React를 사용하면서 체득하지 못했던 Context API를 학습하기 위�
   - 투두의 제목
   - 투두의 내용
   - 투두의 일자
+
+## 도전할 챌린지들
+- `TodoContext`가 반드시 `TodoContextProvider`에서만 사용될 수 있도록 만들기 (그렇지 않을 경우 Error Throw)
+- `useTodoContext`에서 설렉터 추가해보기
+- Context API를 테스트하는 테스트 케이스 작성
