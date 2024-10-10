@@ -1,13 +1,13 @@
 import { useTodoContext } from '^/shared/context';
 import { ListItem } from '^/shared/list-item';
-import { TodoItem } from '^/shared/types';
+import { AppMode, TodoItem } from '^/shared/types';
 
 interface Props {
   todoItem: Pick<TodoItem, 'id' | 'title'>;
 }
 
 export function TodoListItem({ todoItem: { id, title } }: Props) {
-  const { selectedTodoId, selectTodoId } = useTodoContext();
+  const { selectedTodoId, selectTodoId, setAppMode } = useTodoContext();
 
   const isSelected = id === selectedTodoId;
 
@@ -23,6 +23,7 @@ export function TodoListItem({ todoItem: { id, title } }: Props) {
       }
       onClick={() => {
         selectTodoId(id);
+        setAppMode(AppMode.DETAIL);
       }}
     >
       {title}
