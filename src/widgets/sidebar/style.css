@@ -1,0 +1,12 @@
+.sidebar {
+  width: 100%;
+
+  display: grid;
+  grid-template-rows: 4rem 1fr;
+}
+
+.create-todo-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
