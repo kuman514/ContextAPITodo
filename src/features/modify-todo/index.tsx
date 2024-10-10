@@ -3,11 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { TodoForm } from '^/entities/todo-form';
 import { BaseButton } from '^/shared/base-button';
 import { useTodoContext } from '^/shared/context';
+import { AppMode, ButtonType } from '^/shared/types';
 
 import './style.css';
 
 export function ModifyTodo() {
-  const { data, selectedTodoId, modifyTodoItem } = useTodoContext();
+  const { data, selectedTodoId, modifyTodoItem, setAppMode } = useTodoContext();
 
   const selectedTodo = useMemo(
     () => data.find((todoItem) => todoItem.id === selectedTodoId),
@@ -34,23 +35,32 @@ export function ModifyTodo() {
         onChangeTitle={setTitle}
         onChangeContent={setContent}
       />
-      <BaseButton
-        onClick={() => {
-          if (title.length === 0) {
-            return;
-          }
-          modifyTodoItem(selectedTodo.id, {
-            ...selectedTodo,
-            title,
-            content,
-            modifiedAt: new Date(),
-          });
-          setTitle('');
-          setContent('');
-        }}
-      >
-        Modify
-      </BaseButton>
+      <div className="button-area">
+        <BaseButton
+          onClick={() => {
+            if (title.length === 0) {
+              return;
+            }
+            modifyTodoItem(selectedTodo.id, {
+              ...selectedTodo,
+              title,
+              content,
+              modifiedAt: new Date(),
+            });
+            setAppMode(AppMode.DETAIL);
+          }}
+        >
+          Modify
+        </BaseButton>
+        <BaseButton
+          type={ButtonType.OUTLINE}
+          onClick={() => {
+            setAppMode(AppMode.DETAIL);
+          }}
+        >
+          Cancel
+        </BaseButton>
+      </div>
     </div>
   ) : (
     <div className="empty-todo-detail">
