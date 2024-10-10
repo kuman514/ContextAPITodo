@@ -3,10 +3,12 @@ import { useMemo } from 'react';
 import { useTodoContext } from '^/shared/context';
 import { convertDateToString } from '^/shared/utils';
 
+import { BaseButton } from '^/shared/base-button';
+import { AppMode, ButtonType } from '^/shared/types';
 import './style.css';
 
 export function TodoDetail() {
-  const { data, selectedTodoId } = useTodoContext();
+  const { data, selectedTodoId, deleteTodoItem, setAppMode } = useTodoContext();
 
   const selectedTodo = useMemo(
     () => data.find((todoItem) => todoItem.id === selectedTodoId),
@@ -29,6 +31,21 @@ export function TodoDetail() {
       <div>
         <span className="todo-label">Detail</span>
         <p>{selectedTodo.content}</p>
+      </div>
+      <div>
+        <BaseButton
+          type={ButtonType.FILLED_DANGER}
+          onClick={() => {
+            if (
+              window.confirm(`Are you sure to delete ${selectedTodo.title}?`)
+            ) {
+              deleteTodoItem(selectedTodo.id);
+              setAppMode(AppMode.DETAIL);
+            }
+          }}
+        >
+          Delete
+        </BaseButton>
       </div>
     </div>
   ) : (
