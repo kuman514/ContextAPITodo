@@ -32,7 +32,15 @@ export function TodoDetail() {
         <span className="todo-label">Detail</span>
         <p>{selectedTodo.content}</p>
       </div>
-      <div>
+      <div className="button-area">
+        <BaseButton
+          type={ButtonType.FILLED}
+          onClick={() => {
+            setAppMode(AppMode.MODIFY);
+          }}
+        >
+          Modify
+        </BaseButton>
         <BaseButton
           type={ButtonType.FILLED_DANGER}
           onClick={() => {
