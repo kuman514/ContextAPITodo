@@ -7,7 +7,7 @@ import { AppMode } from '^/shared/types';
 import './style.css';
 
 export function Sidebar() {
-  const { setAppMode } = useTodoContext();
+  const { setAppMode, selectTodoId } = useTodoContext();
 
   return (
     <div className="sidebar">
@@ -15,6 +15,7 @@ export function Sidebar() {
         <BaseButton
           onClick={() => {
             setAppMode(AppMode.CREATE);
+            selectTodoId(-1);
           }}
         >
           Create Todo
