@@ -14,5 +14,5 @@ const MONTH = [
 ];
 
 export function convertDateToString(date: Date) {
-  return `${MONTH[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  return `${MONTH[date.getMonth()]} ${date.getDate()} ${date.getFullYear()}, ${date.getHours()}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
 }
