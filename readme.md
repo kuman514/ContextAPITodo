@@ -20,5 +20,7 @@ React를 사용하면서 체득하지 못했던 Context API를 학습하기 위�
 
 ## 도전할 챌린지들
 - `TodoContext`가 반드시 `TodoContextProvider`에서만 사용될 수 있도록 만들기 (그렇지 않을 경우 Error Throw)
+  - [`createContext`에 default value를 사용하지 않도록 설정](https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/context/#without-default-context-value)
+  - useContext가 Provider 밖에서 사용되어 value가 없을(null일) 때 에러를 던지도록 로직 작성.
 - `useTodoContext`에서 설렉터 추가해보기
 - Context API를 테스트하는 테스트 케이스 작성

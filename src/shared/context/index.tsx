@@ -51,19 +51,20 @@ function saveToStorage(data: TodoItem[]) {
   localStorage.setItem('context-api-practice-todo-items', JSON.stringify(data));
 }
 
-const TodoContext = createContext<TodoItemContext>({
-  data: [],
-  selectedTodoId: -1,
-  appMode: AppMode.DETAIL,
-  selectTodoId: () => {},
-  createTodoItem: () => {},
-  modifyTodoItem: () => {},
-  deleteTodoItem: () => {},
-  setAppMode: () => {},
-});
+const TodoContext = createContext<TodoItemContext | null>(null);
 
+/**
+ * @description
+ * `TodoContext` is designed to be only in `TodoContextProvider`.
+ * Therefore, if `TodoContext` is used outside `TodoContextProvider`, it will throw an error.
+ */
 export function useTodoContext() {
   const context = useContext(TodoContext);
+  if (!context) {
+    throw new Error(
+      'The Todo Context should be only in Todo Context Provider.'
+    );
+  }
   return context;
 }
 
