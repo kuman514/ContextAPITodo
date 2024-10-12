@@ -7,7 +7,9 @@ interface Props {
 }
 
 export function TodoListItem({ todoItem: { id, title } }: Props) {
-  const { selectedTodoId, selectTodoId, setAppMode } = useTodoContext();
+  const selectedTodoId = useTodoContext((context) => context.selectedTodoId);
+  const selectTodoId = useTodoContext((context) => context.selectTodoId);
+  const setAppMode = useTodoContext((context) => context.setAppMode);
 
   const isSelected = id === selectedTodoId;
 

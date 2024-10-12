@@ -5,7 +5,7 @@ import { useTodoContext } from '^/shared/context';
 import { AppMode } from '^/shared/types';
 
 export function ContentSection() {
-  const { appMode } = useTodoContext();
+  const appMode = useTodoContext((context) => context.appMode);
 
   switch (appMode) {
     case AppMode.CREATE:

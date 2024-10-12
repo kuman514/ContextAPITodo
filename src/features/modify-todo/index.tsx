@@ -8,7 +8,10 @@ import { AppMode, ButtonType } from '^/shared/types';
 import './style.css';
 
 export function ModifyTodo() {
-  const { data, selectedTodoId, modifyTodoItem, setAppMode } = useTodoContext();
+  const data = useTodoContext((context) => context.data);
+  const selectedTodoId = useTodoContext((context) => context.selectedTodoId);
+  const modifyTodoItem = useTodoContext((context) => context.modifyTodoItem);
+  const setAppMode = useTodoContext((context) => context.setAppMode);
 
   const selectedTodo = useMemo(
     () => data.find((todoItem) => todoItem.id === selectedTodoId),

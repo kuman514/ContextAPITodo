@@ -4,7 +4,8 @@ import { useTodoContext } from '^/shared/context';
 import './style.css';
 
 export function TodoList() {
-  const { data } = useTodoContext();
+  const data = useTodoContext((context) => context.data);
+
   return (
     <ul className="todo-list">
       {data.map(({ id, title }) => (

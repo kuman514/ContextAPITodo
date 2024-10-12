@@ -58,14 +58,19 @@ const TodoContext = createContext<TodoItemContext | null>(null);
  * `TodoContext` is designed to be only in `TodoContextProvider`.
  * Therefore, if `TodoContext` is used outside `TodoContextProvider`, it will throw an error.
  */
-export function useTodoContext() {
+export function useTodoContext<SelectedType = TodoItemContext>(
+  selector: (context: TodoItemContext) => SelectedType = (
+    context: TodoItemContext
+  ) => context as SelectedType
+) {
   const context = useContext(TodoContext);
   if (!context) {
     throw new Error(
       'The Todo Context should be only in Todo Context Provider.'
     );
   }
-  return context;
+
+  return selector(context);
 }
 
 interface TodoContextProviderProps {

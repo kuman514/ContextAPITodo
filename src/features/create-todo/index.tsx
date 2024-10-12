@@ -8,7 +8,11 @@ import { AppMode, ButtonType } from '^/shared/types';
 import './style.css';
 
 export function CreateTodo() {
-  const { data, createTodoItem, setAppMode, selectTodoId } = useTodoContext();
+  const data = useTodoContext((context) => context.data);
+  const createTodoItem = useTodoContext((context) => context.createTodoItem);
+  const setAppMode = useTodoContext((context) => context.setAppMode);
+  const selectTodoId = useTodoContext((context) => context.selectTodoId);
+
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 

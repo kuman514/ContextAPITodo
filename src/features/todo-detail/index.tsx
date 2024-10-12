@@ -1,14 +1,17 @@
 import { useMemo } from 'react';
 
+import { BaseButton } from '^/shared/base-button';
 import { useTodoContext } from '^/shared/context';
+import { AppMode, ButtonType } from '^/shared/types';
 import { convertDateToString } from '^/shared/utils';
 
-import { BaseButton } from '^/shared/base-button';
-import { AppMode, ButtonType } from '^/shared/types';
 import './style.css';
 
 export function TodoDetail() {
-  const { data, selectedTodoId, deleteTodoItem, setAppMode } = useTodoContext();
+  const data = useTodoContext((context) => context.data);
+  const selectedTodoId = useTodoContext((context) => context.selectedTodoId);
+  const deleteTodoItem = useTodoContext((context) => context.deleteTodoItem);
+  const setAppMode = useTodoContext((context) => context.setAppMode);
 
   const selectedTodo = useMemo(
     () => data.find((todoItem) => todoItem.id === selectedTodoId),

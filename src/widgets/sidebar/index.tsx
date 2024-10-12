@@ -7,7 +7,8 @@ import { AppMode } from '^/shared/types';
 import './style.css';
 
 export function Sidebar() {
-  const { setAppMode, selectTodoId } = useTodoContext();
+  const setAppMode = useTodoContext((context) => context.setAppMode);
+  const selectTodoId = useTodoContext((context) => context.selectTodoId);
 
   return (
     <div className="sidebar">
