@@ -30,7 +30,7 @@ export function TodoDetail() {
       </div>
       <div>
         <span className="todo-label">Detail</span>
-        <p>{selectedTodo.content}</p>
+        <p className="todo-content">{selectedTodo.content}</p>
       </div>
       <div className="button-area">
         <BaseButton

@@ -18,6 +18,10 @@
   font-weight: 700;
 }
 
+.todo-content {
+  white-space: pre;
+}
+
 .empty-todo-detail {
   display: flex;
   justify-content: center;
